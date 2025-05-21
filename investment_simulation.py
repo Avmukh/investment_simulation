@@ -14,6 +14,7 @@ Visualize how your portfolio grows over time with:
 - 📈 Customizable **return** & **duration**
 
 ---("Made with the effort of Sri Avimukh")
+
 """"")
 
 
