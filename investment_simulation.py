@@ -66,3 +66,6 @@ st.pyplot(fig)
 st.markdown("---")
 st.success(f"**Final Portfolio Value**: ₹{round(portfolio[-1]):,}")
 st.info(f"**Total Amount Invested**: ₹{round(invested[-1]):,}")
+
+st.markdown("---")
+st.markdown("Made with ❤️ by Avik & Nandita")
