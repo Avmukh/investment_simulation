@@ -3,15 +3,20 @@ import numpy as np
 from babel.numbers import format_currency
 import matplotlib.pyplot as plt
 
-st.title("💰 Investment Growth Simulator")
+st.set_page_config(page_title="Investment Growth Simulator", layout="centered")
+st.markdown("""
+# 💰 Investment Growth Simulator
 
-st.write("")  # adds a blank line
+Visualize how your portfolio grows over time with:
+- 📦 One-time **lumpsum**
+- 💸 Monthly **SIP**
+- ⏫ Annual **step-up** (percent or fixed)
+- 📈 Customizable **return** & **duration**
 
-st.header("Here you can calculate Wealth with the use of Lumpsum, SIP & Step-Up SIPs")
+---("Made with the effort of Sri Avimukh")
+""")
 
-st.markdown("<br>", unsafe_allow_html=True)  # adds HTML line break for more space
 
-st.subheader("Made with the effort of Sri Avimukh")
 
 # Input sliders
 lumpsum = st.slider("Lumpsum (₹)", 0, 10_000_000, 100_000, step=1000)
