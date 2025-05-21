@@ -20,8 +20,11 @@ Visualize how your portfolio grows over time with:
 
 
 # Input sliders
+st.write("")  # adds one blank line
+st.text("")   # also adds one blank line
+
 lumpsum = st.slider("Lumpsum (₹)", 0, 10_000_000, 100_000, step=1000)
-monthly_sip = st.slider("Monthly SIP (₹)", 0, 50_000, 10_000, step=1000)
+monthly_sip = st.slider("Monthly SIP (₹)", 0, 100_000, 10_000, step=1000)
 step_up_mode = st.radio("Step-up mode", ['Percent', 'Fixed Amount'])
 step_up_pct = 0
 step_up_amt = 0
