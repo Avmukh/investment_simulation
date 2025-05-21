@@ -49,4 +49,4 @@ st.pyplot(fig)
 
 # Final numbers
 st.subheader("💰 Final Portfolio Summary")
-st.markdo
+st.markdown
