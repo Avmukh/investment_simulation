@@ -5,6 +5,14 @@ import matplotlib.pyplot as plt
 
 st.title("💰 Investment Growth Simulator")
 
+st.write("")  # adds a blank line
+
+st.header("Here you can calculate Wealth with the use of Lumpsum, SIP & Step-Up SIPs")
+
+st.markdown("<br>", unsafe_allow_html=True)  # adds HTML line break for more space
+
+st.subheader("Made with the effort of Sri Avimukh")
+
 # Input sliders
 lumpsum = st.slider("Lumpsum (₹)", 0, 10_000_000, 100_000, step=1000)
 monthly_sip = st.slider("Monthly SIP (₹)", 0, 50_000, 10_000, step=1000)
