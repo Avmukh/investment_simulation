@@ -13,7 +13,7 @@ Visualize how your portfolio grows over time with:
 - ⏫ Annual **step-up** (percent or fixed)
 - 📈 Customizable **return** & **duration**
 
----("")
+---("Enjoy & remember!! Don't care what anyone says. Being rich is a good thing.")
 
 """"")
 st.markdown(
