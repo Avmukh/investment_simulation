@@ -13,10 +13,17 @@ Visualize how your portfolio grows over time with:
 - ⏫ Annual **step-up** (percent or fixed)
 - 📈 Customizable **return** & **duration**
 
----("Made with the effort of Sri Avimukh")
+---("")
 
 """"")
-
+st.markdown(
+    """
+    <div style='text-align: right;'>
+       ---"Made with the effort of Sri Avimukh"
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 
 # Input sliders
