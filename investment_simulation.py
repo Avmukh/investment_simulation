@@ -9,7 +9,7 @@ from babel.numbers import format_currency
 st.set_page_config(page_title="Investment Growth Simulator", layout="centered")
 st.markdown("""
 # 💰 Investment Planning Strategy
-#      By N.M FinServ & AvMukh
+
 
 Visualize how your portfolio grows over time with:
 - 📦 One-time **lumpsum**
