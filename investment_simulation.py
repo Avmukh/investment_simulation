@@ -25,30 +25,32 @@ st.markdown(
 
 # --- Helper: Synced Slider + Number Input ---
 def synced_slider(label, min_val, max_val, default, step, key_base):
+    slider_key = f"{key_base}_slider"
+    input_key = f"{key_base}_num"
+
     if key_base not in st.session_state:
         st.session_state[key_base] = default
+
     col1, col2 = st.columns([3, 1])
     with col1:
-        slider_val = st.slider(label, min_val, max_val, st.session_state[key_base], step=step, key=f"{key_base}_slider")
+        slider_val = st.slider(label, min_val, max_val, st.session_state[key_base], step=step, key=slider_key)
     with col2:
-        input_val = st.number_input("", min_val, max_val, st.session_state[key_base], step=step, key=f"{key_base}_num")
-    if input_val != st.session_state[key_base]:
-        st.session_state[key_base] = input_val
-    elif slider_val != st.session_state[key_base]:
+        input_val = st.number_input("", min_val, max_val, st.session_state[key_base], step=step, key=input_key)
+
+    # Sync logic
+    if slider_val != st.session_state[key_base]:
         st.session_state[key_base] = slider_val
+    elif input_val != st.session_state[key_base]:
+        st.session_state[key_base] = input_val
+
     return st.session_state[key_base]
 
 # --- Inputs ---
-st.write("")
 lumpsum = synced_slider("Lumpsum (₹)", 0, 10_000_000, 100_000, 1000, "lumpsum")
 monthly_sip = synced_slider("Monthly SIP (₹)", 0, 100_000, 10_000, 1000, "sip")
 step_up_mode = st.radio("Step-up mode", ['Percent', 'Fixed Amount'])
-step_up_pct = 0
-step_up_amt = 0
-if step_up_mode == 'Percent':
-    step_up_pct = synced_slider("Step-up % /yr", 0, 100, 5, 1, "stepup_pct")
-else:
-    step_up_amt = synced_slider("Step-up Amount /yr (₹)", 0, 20_000, 1000, 100, "stepup_amt")
+step_up_pct = synced_slider("Step-up % /yr", 0, 100, 5, 1, "stepup_pct") if step_up_mode == 'Percent' else 0
+step_up_amt = synced_slider("Step-up Amount /yr (₹)", 0, 20_000, 1000, 100, "stepup_amt") if step_up_mode == 'Fixed Amount' else 0
 annual_return = synced_slider("Annual Return %", 5, 20, 12, 1, "return") / 100
 years = synced_slider("Years", 1, 30, 15, 1, "years")
 
@@ -98,7 +100,7 @@ if st.session_state.run:
                 ax.legend()
                 chart_placeholder.pyplot(fig)
                 progress_bar.progress(step_count / total_steps, text=f"Year {year}, Month {month + 1}")
-                time.sleep(0.05)  # control animation speed
+                time.sleep(0.05)
 
         # Apply step-up after each year
         if step_up_mode == 'Percent':
@@ -139,6 +141,9 @@ if st.session_state.run:
         file_name="investment_report.csv",
         mime="text/csv"
     )
+
+    if st.button("🔁 Reset Simulation"):
+        st.session_state.run = False
 
 st.markdown("---")
 st.markdown("Made with ❤️ by Avik & Nandita")
