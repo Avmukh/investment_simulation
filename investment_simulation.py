@@ -23,6 +23,7 @@ st.markdown(
     "<div style='text-align: right;'>---\"Made with the effort of Sri Avmukh\"</div>",
     unsafe_allow_html=True
 )
+"")
 
 # --- Helper: Synced Slider + Number Input ---
 def synced_slider(label, min_val, max_val, default, step, key_base):
@@ -135,6 +136,6 @@ if st.session_state.run:
 
 # --- Footer ---
 st.markdown(
-    "<hr style='margin-top:40px;'><div style='text-align:right;'>Made with ❤️ by <b>Avik & Nandita</b></div>",
+    "<hr style='margin-top:140px;'><div style='text-align:center;'>Made with ❤️ by <b>Avik & Nandita</b></div>",
     unsafe_allow_html=True
 )
