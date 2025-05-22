@@ -134,7 +134,11 @@ if st.session_state.run:
     # CAGR Calculation
     cagr = ((portfolio_values[-1] / invested_values[-1]) ** (1 / years) - 1) * 100
     st.metric("CAGR (%)", f"{cagr:.2f}")
-     # --- Inflation Input ---
+
+with st.expander("ℹ️ More details", expanded=False):  # collapsed by default
+    st.write("This content is hidden until you click the expander.")
+
+# --- Inflation Input ---
 st.markdown("### 🧮 Additional Metrics")
 inflation_rate = st.slider("Assumed Inflation Rate (%)", 0.0, 15.0, 6.0, 0.1)
 
