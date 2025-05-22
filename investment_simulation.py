@@ -135,8 +135,6 @@ if st.session_state.run:
     cagr = ((portfolio_values[-1] / invested_values[-1]) ** (1 / years) - 1) * 100
     st.metric("CAGR (%)", f"{cagr:.2f}")
 
-with st.expander("ℹ️ More details", expanded=False):  # collapsed by default
-    st.write("This content is hidden until you click the expander.")
 
 # --- Inflation Input ---
 st.markdown("### 🧮 Additional Metrics")
