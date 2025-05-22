@@ -142,6 +142,54 @@ with st.expander("ℹ️ What's the difference between Annual Return and CAGR?")
 
     Because money is added gradually (via SIPs and step-ups), the CAGR is usually **lower** than the Annual Return unless everything is invested upfront.
     """)
+with st.expander("ℹ️ What's the difference between IRR and XIRR?"):
+    st.markdown("""
+**IRR** (Internal Rate of Return) is a metric used to evaluate the profitability of an investment. It assumes that all cash flows occur at regular intervals (e.g., monthly, yearly), which is not always the case in real life.
+
+**XIRR** (Extended IRR) is a more accurate version of IRR. It allows for **irregular cash flows** – meaning it considers the actual dates when money is invested or withdrawn.
+
+### 🔍 Key Difference:
+- Use **IRR** when cash flows are **evenly spaced** (e.g., monthly SIPs).
+- Use **XIRR** when cash flows are **irregular** (e.g., lumpsums added at random dates, redemptions).
+
+In real-world mutual fund investing (especially with SIPs, redemptions, top-ups), **XIRR gives a more realistic return**.
+""")
+with st.expander("ℹ️ Understanding Returns: CAGR, Annualized Return & Inflation Adjustment"):
+    st.markdown("""
+### 📈 **Annualized Return**
+This is the **constant yearly return** that would result in the same final value as your actual investment growth. It assumes **compounded growth**.
+
+### 🔁 **CAGR (Compound Annual Growth Rate)**
+- CAGR is a type of annualized return.
+- It reflects the **smoothed yearly rate** at which your investment grew from **beginning to end**, ignoring intermediate ups and downs.
+- Formula:  
+  \n\\( \\text{CAGR} = \\left(\\frac{\\text{Final Value}}{\\text{Total Invested}}\\right)^{1/n} - 1 \\)  
+  where \\( n \\) is the number of years.
+
+> **Use CAGR** to compare long-term investment performance across different options.
+
+---
+
+### 💸 **Inflation-Adjusted Return (Real Return)**
+- Shows how much your investment actually **grew in purchasing power**.
+- Adjusted for inflation to show **real wealth gain**.
+- Formula:  
+  \n\\( \\text{Real Return} = \\frac{1 + \\text{Nominal Return}}{1 + \\text{Inflation Rate}} - 1 \\)
+
+> Even if your investment grew at 12%, if inflation was 6%, your **real return is only ~5.66%**.
+
+---
+
+### 🧠 Summary
+| Term                     | Adjusts for Inflation | Uses Compounding | Real-World Use Case |
+|--------------------------|-----------------------|------------------|---------------------|
+| Annual Return            | ❌                    | ✅               | Target or Assumption |
+| CAGR                     | ❌                    | ✅               | Measuring actual growth |
+| Inflation-Adjusted Return| ✅                    | ✅               | Real wealth growth |
+| XIRR                    | ❌ (or ✅ if adjusted) | ✅               | Irregular cash flows |
+
+Always evaluate investments in **real terms**, not just nominal numbers.
+""")
 
  
 
