@@ -1,8 +1,9 @@
 import streamlit as st
 import numpy as np
-from babel.numbers import format_currency
+import pandas as pd
 import matplotlib.pyplot as plt
 import time
+from babel.numbers import format_currency
 
 # --- Page Setup ---
 st.set_page_config(page_title="Investment Growth Simulator", layout="centered")
@@ -15,10 +16,10 @@ Visualize how your portfolio grows over time with:
 - ⏫ Annual **step-up** (percent or fixed)
 - 📈 Customizable **return** & **duration**
 
----("Enjoy & Remember!! Don't care what anyone says. Being rich is a good thing.")
+---("Enjoy & remember!! Don't care what anyone says. Being rich is a good thing.")
 """)
 st.markdown(
-    "<div style='text-align: right;'>---\"Made with the effort of Sri Avmukh\"</div>",
+    "<div style='text-align: right;'>---\"Made with the effort of Sri Avimukh\"</div>",
     unsafe_allow_html=True
 )
 
@@ -51,70 +52,93 @@ else:
 annual_return = synced_slider("Annual Return %", 5, 20, 12, 1, "return") / 100
 years = synced_slider("Years", 1, 30, 15, 1, "years")
 
-# --- Animation Controls ---
-animate = st.checkbox("🔄 Animate Chart (Year + Month)", value=True)
+# --- Control Buttons ---
+col_run, col_anim = st.columns([1, 2])
+run_simulation = col_run.button("▶️ Run Simulation")
+animate = col_anim.checkbox("🔄 Animate Chart (Year + Month)", value=True)
+
+if "run" not in st.session_state:
+    st.session_state.run = False
+if run_simulation:
+    st.session_state.run = True
 
 # --- Simulation & Animation ---
-future_value = lumpsum
-invested = lumpsum
-sip = monthly_sip
+if st.session_state.run:
+    future_value = lumpsum
+    invested = lumpsum
+    sip = monthly_sip
 
-portfolio_values = [future_value]
-invested_values = [invested]
+    portfolio_values = [future_value]
+    invested_values = [invested]
 
-chart_placeholder = st.empty()
-progress_bar = st.progress(0, text="Starting simulation...")
+    chart_placeholder = st.empty()
+    progress_bar = st.progress(0, text="Starting simulation...")
 
-total_steps = years * 12
-step_count = 0
+    total_steps = years * 12
+    step_count = 0
 
-for year in range(1, years + 1):
-    for month in range(12):
-        future_value = future_value * (1 + annual_return / 12) + sip
-        invested += sip
-        portfolio_values.append(future_value)
-        invested_values.append(invested)
-        step_count += 1
+    for year in range(1, years + 1):
+        for month in range(12):
+            future_value = future_value * (1 + annual_return / 12) + sip
+            invested += sip
+            portfolio_values.append(future_value)
+            invested_values.append(invested)
+            step_count += 1
 
-        # Update chart at each month
-        if animate:
-            fig, ax = plt.subplots(figsize=(10, 5))
-            months_elapsed = range(step_count + 1)
-            ax.plot(months_elapsed, portfolio_values, label='Portfolio Value', linewidth=2)
-            ax.plot(months_elapsed, invested_values, label='Total Invested', linestyle='--', linewidth=2)
-            ax.set_title("Investment Growth vs Total Invested")
-            ax.set_xlabel("Months")
-            ax.set_ylabel("Amount (₹)")
-            ax.grid(True)
-            ax.legend()
-            chart_placeholder.pyplot(fig)
-            progress_bar.progress(step_count / total_steps, text=f"Year {year}, Month {month + 1}")
-            time.sleep(0.05)  # control animation speed
+            # Update chart monthly
+            if animate:
+                fig, ax = plt.subplots(figsize=(10, 5))
+                months_elapsed = range(step_count + 1)
+                ax.plot(months_elapsed, portfolio_values, label='Portfolio Value', linewidth=2)
+                ax.plot(months_elapsed, invested_values, label='Total Invested', linestyle='--', linewidth=2)
+                ax.set_title("Investment Growth vs Total Invested")
+                ax.set_xlabel("Months")
+                ax.set_ylabel("Amount (₹)")
+                ax.grid(True)
+                ax.legend()
+                chart_placeholder.pyplot(fig)
+                progress_bar.progress(step_count / total_steps, text=f"Year {year}, Month {month + 1}")
+                time.sleep(0.05)  # control animation speed
 
-    # Apply step-up after each year
-    if step_up_mode == 'Percent':
-        sip *= (1 + step_up_pct / 100)
-    else:
-        sip += step_up_amt
+        # Apply step-up after each year
+        if step_up_mode == 'Percent':
+            sip *= (1 + step_up_pct / 100)
+        else:
+            sip += step_up_amt
 
-# Final static plot
-fig, ax = plt.subplots(figsize=(10, 5))
-months_elapsed = range(len(portfolio_values))
-ax.plot(months_elapsed, portfolio_values, label='Portfolio Value', linewidth=2)
-ax.plot(months_elapsed, invested_values, label='Total Invested', linestyle='--', linewidth=2)
-ax.set_title("Investment Growth vs Total Invested")
-ax.set_xlabel("Months")
-ax.set_ylabel("Amount (₹)")
-ax.grid(True)
-ax.legend()
-chart_placeholder.pyplot(fig)
-progress_bar.empty()
+    # Final Static Chart
+    fig, ax = plt.subplots(figsize=(10, 5))
+    months_elapsed = range(len(portfolio_values))
+    ax.plot(months_elapsed, portfolio_values, label='Portfolio Value', linewidth=2)
+    ax.plot(months_elapsed, invested_values, label='Total Invested', linestyle='--', linewidth=2)
+    ax.set_title("Investment Growth vs Total Invested")
+    ax.set_xlabel("Months")
+    ax.set_ylabel("Amount (₹)")
+    ax.grid(True)
+    ax.legend()
+    chart_placeholder.pyplot(fig)
+    progress_bar.empty()
 
-# --- Display Results ---
-final_val = round(portfolio_values[-1])
-invested_val = round(invested_values[-1])
-st.success(f"**Final Portfolio Value:** {format_currency(final_val, 'INR', locale='en_IN')}")
-st.info(f"**Total Amount Invested:** {format_currency(invested_val, 'INR', locale='en_IN')}")
+    # --- Final Output ---
+    final_val = round(portfolio_values[-1])
+    invested_val = round(invested_values[-1])
+    st.success(f"**Final Portfolio Value:** {format_currency(final_val, 'INR', locale='en_IN')}")
+    st.info(f"**Total Amount Invested:** {format_currency(invested_val, 'INR', locale='en_IN')}")
+
+    # --- CSV Download ---
+    df = pd.DataFrame({
+        "Month": list(range(len(portfolio_values))),
+        "Total Invested (₹)": invested_values,
+        "Portfolio Value (₹)": portfolio_values
+    })
+
+    csv = df.to_csv(index=False).encode('utf-8')
+    st.download_button(
+        label="📥 Download Report as CSV",
+        data=csv,
+        file_name="investment_report.csv",
+        mime="text/csv"
+    )
 
 st.markdown("---")
 st.markdown("Made with ❤️ by Avik & Nandita")
