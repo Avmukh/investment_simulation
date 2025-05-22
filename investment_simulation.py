@@ -22,7 +22,9 @@ Visualize how your portfolio grows over time with:
 st.markdown(
     "<div style='text-align: right;'>---\"Made with the effort of Sri Avmukh\"</div>",
     unsafe_allow_html=True
-"")
+)
+""")
+
 
 
 # --- Helper: Synced Slider + Number Input ---
