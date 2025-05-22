@@ -136,19 +136,19 @@ if st.session_state.run:
     st.metric("CAGR (%)", f"{cagr:.2f}")
 
 
-# --- Inflation Input ---
-st.markdown("### 🧮 Additional Metrics")
-inflation_rate = st.slider("Assumed Inflation Rate (%)", 0.0, 15.0, 6.0, 0.1)
+     # --- Inflation Input ---
+     st.markdown("### 🧮 Additional Metrics")
+     inflation_rate = st.slider("Assumed Inflation Rate (%)", 0.0, 15.0, 6.0, 0.1)
 
-# --- Real Return Calculation ---
-real_return = ((1 + annual_return) / (1 + inflation_rate / 100)) - 1
-real_cagr = ((portfolio_values[-1] / invested_values[-1]) ** (1 / years) - 1)
-real_cagr_adjusted = ((1 + real_cagr) / (1 + inflation_rate / 100)) - 1
+     # --- Real Return Calculation ---
+     real_return = ((1 + annual_return) / (1 + inflation_rate / 100)) - 1
+     real_cagr = ((portfolio_values[-1] / invested_values[-1]) ** (1 / years) - 1)
+     real_cagr_adjusted = ((1 + real_cagr) / (1 + inflation_rate / 100)) - 1
 
-# --- Display ---
-st.metric("CAGR (Nominal %)", f"{real_cagr*100:.2f}%")
-st.metric("Inflation-Adjusted CAGR", f"{real_cagr_adjusted*100:.2f}%")
-st.metric("Inflation-Adjusted Annual Return", f"{real_return*100:.2f}%")
+     # --- Display ---
+     st.metric("CAGR (Nominal %)", f"{real_cagr*100:.2f}%")
+     #st.metric("Inflation-Adjusted CAGR", f"{real_cagr_adjusted*100:.2f}%")
+     st.metric("Inflation-Adjusted Annual Return", f"{real_return*100:.2f}%")
 
 with st.expander("ℹ️ What's the difference between Annual Return and CAGR?"):
     st.markdown("""
