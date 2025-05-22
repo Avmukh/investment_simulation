@@ -23,7 +23,7 @@ st.markdown(
     "<div style='text-align: right;'>---\"Made with the effort of Sri Avmukh\"</div>",
     unsafe_allow_html=True
 )
-""")
+
 
 
 
