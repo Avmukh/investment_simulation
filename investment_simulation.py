@@ -144,8 +144,8 @@ real_cagr = ((portfolio_values[-1] / invested_values[-1]) ** (1 / years) - 1)
 real_cagr_adjusted = ((1 + real_cagr) / (1 + inflation_rate / 100)) - 1
 
 # --- Display ---
-st.metric("CAGR (Nominal %)", f"{real_cagr*100:.2f}%")
-st.metric("Inflation-Adjusted CAGR", f"{real_cagr_adjusted*100:.2f}%")
+#st.metric("CAGR (Nominal %)", f"{real_cagr*100:.2f}%")
+#st.metric("Inflation-Adjusted CAGR", f"{real_cagr_adjusted*100:.2f}%")
 st.metric("Inflation-Adjusted Annual Return", f"{real_return*100:.2f}%")
 
 
