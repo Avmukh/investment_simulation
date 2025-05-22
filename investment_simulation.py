@@ -142,6 +142,7 @@ with st.expander("ℹ️ What's the difference between Annual Return and CAGR?")
 
     Because money is added gradually (via SIPs and step-ups), the CAGR is usually **lower** than the Annual Return unless everything is invested upfront.
     """)
+
 with st.expander("ℹ️ What's the difference between IRR and XIRR?"):
     st.markdown("""
 **IRR** (Internal Rate of Return) is a metric used to evaluate the profitability of an investment. It assumes that all cash flows occur at regular intervals (e.g., monthly, yearly), which is not always the case in real life.
@@ -154,6 +155,7 @@ with st.expander("ℹ️ What's the difference between IRR and XIRR?"):
 
 In real-world mutual fund investing (especially with SIPs, redemptions, top-ups), **XIRR gives a more realistic return**.
 """)
+
 with st.expander("ℹ️ Understanding Returns: CAGR, Annualized Return & Inflation Adjustment"):
     st.markdown("""
 ### 📈 **Annualized Return**
