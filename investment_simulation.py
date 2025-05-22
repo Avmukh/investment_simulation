@@ -20,7 +20,7 @@ Visualize how your portfolio grows over time with:
 """)
 
 st.markdown(
-     "<div style='text-align: right; margin-bottom: 20px;'>---\"Made with the effort of Sri Avmukh\"</div>",
+     "<div style='text-align: right; margin-bottom: 40px;'>---\"Made with the effort of Sri Avmukh\"</div>",
     unsafe_allow_html=True
 )
 
@@ -138,6 +138,6 @@ if st.session_state.run:
 
 # --- Footer ---
 st.markdown(
-    "<hr style='margin-top:140px;'><div style='text-align:center;'>Made with ❤️ by <b>Avik & Nandita</b></div>",
+    "<hr style='margin-top:40px;'><div style='text-align:center;'>Made with ❤️ by <b>Avik & Nandita</b></div>",
     unsafe_allow_html=True
 )
