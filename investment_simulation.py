@@ -21,7 +21,7 @@ Visualize how your portfolio grows over time with:
 """)
 
 st.markdown(
-     "<div style='text-align: right; margin-bottom: 40px;'>---\"Made with the effort of Sri Avmukh\"</div>",
+     "<div style='text-align: right; margin-bottom: 40px;'>---\"Sri Avmukh & NM FinServ Presents\"</div>",
     unsafe_allow_html=True
 )
 
