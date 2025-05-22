@@ -8,7 +8,8 @@ from babel.numbers import format_currency
 # --- Page Setup ---Investment Growth Simulator
 st.set_page_config(page_title="Investment Growth Simulator", layout="centered")
 st.markdown("""
-# 💰 Investment Planning with N.M FinServ
+# 💰 Investment Planning Made Easy
+# with N.M FinServ & AvMukh
 
 Visualize how your portfolio grows over time with:
 - 📦 One-time **lumpsum**
