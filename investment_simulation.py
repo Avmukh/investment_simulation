@@ -132,7 +132,7 @@ if st.session_state.run:
 
     # CAGR Calculation
     cagr = ((portfolio_values[-1] / invested_values[-1]) ** (1 / years) - 1) * 100
-    st.metric("CAGR (%)", f"{cagr:.2f}"):
+    st.metric("CAGR (%)", f"{cagr:.2f}")
 with st.expander("ℹ️ What's the difference between Annual Return and CAGR?"):
     st.markdown("""
     **Annual Return** is the expected return you enter for simulation – it’s a fixed growth assumption.
