@@ -8,7 +8,7 @@ from babel.numbers import format_currency
 # --- Page Setup ---Investment Growth Simulator
 st.set_page_config(page_title="Investment Growth Simulator", layout="centered")
 st.markdown("""
-# 💰 Investment Planning Strategy
+# 💰 Investment Planning Calculator
 
 
 Visualize how your portfolio grows over time with:
@@ -21,7 +21,7 @@ Visualize how your portfolio grows over time with:
 """)
 
 st.markdown(
-     "<div style='text-align: right; margin-bottom: 40px;'>---\"Sri Avmukh & NM FinServ Presents\"</div>",
+     "<div style='text-align: right; margin-bottom: 40px;'>---\"Presented by Sri Avmukh & NM FinServ\"</div>",
     unsafe_allow_html=True
 )
 
