@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 import time
 from babel.numbers import format_currency
 
-# --- Page Setup ---
+# --- Page Setup ---Investment Growth Simulator
 st.set_page_config(page_title="Investment Growth Simulator", layout="centered")
 st.markdown("""
-# 💰 Investment Growth Simulator
+# 💰 Investment Planning Consultation by N.M FinServ
 
 Visualize how your portfolio grows over time with:
 - 📦 One-time **lumpsum**
