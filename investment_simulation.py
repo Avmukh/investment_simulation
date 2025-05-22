@@ -20,7 +20,7 @@ Visualize how your portfolio grows over time with:
 """)
 st.markdown(
     "<div style='text-align: right;'>---\"Made with the effort of Sri Avmukh\"</div>",
-    
+)
 
 # --- Helper: Synced Slider + Number Input ---
 def synced_slider(label, min_val, max_val, default, step, key_base):
