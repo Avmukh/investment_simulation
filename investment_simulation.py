@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import time
 from babel.numbers import format_currency
 
-# --- Page Setup ---Investment Growth Simulator
+# --- Page Setup ---
 st.set_page_config(page_title="Investment Growth Simulator", layout="centered")
 st.markdown("""
 # 💰 Investment Planning Calculator
@@ -14,7 +14,7 @@ st.markdown("""
 Visualize how your portfolio grows over time with:
 - 📦 One-time **lumpsum**
 - 💸 Monthly **SIP**
-- ⏫ Annual **step-up** (percent or fixed)
+- ⬆️ Annual **step-up** (percent or fixed)
 - 📈 Customizable **return** & **duration**
 
 ---("Enjoy & Remember!! Don't care what anyone says. Being rich is a good thing.")
@@ -24,9 +24,6 @@ st.markdown(
      "<div style='text-align: right; margin-bottom: 40px;'>---\"Presented by Sri Avmukh & NM FinServ\"</div>",
     unsafe_allow_html=True
 )
-
-
-
 
 # --- Helper: Synced Slider + Number Input ---
 def synced_slider(label, min_val, max_val, default, step, key_base):
@@ -134,21 +131,20 @@ if st.session_state.run:
     # CAGR Calculation
     cagr = ((portfolio_values[-1] / invested_values[-1]) ** (1 / years) - 1) * 100
     st.metric("CAGR (%)", f"{cagr:.2f}")
-     # --- Inflation Input ---
-st.markdown("### 🧮 Additional Metrics")
-inflation_rate = st.slider("Assumed Inflation Rate (%)", 0.0, 15.0, 6.0, 0.1)
 
-# --- Real Return Calculation ---
-real_return = ((1 + annual_return) / (1 + inflation_rate / 100)) - 1
-real_cagr = ((portfolio_values[-1] / invested_values[-1]) ** (1 / years) - 1)
-real_cagr_adjusted = ((1 + real_cagr) / (1 + inflation_rate / 100)) - 1
+    # --- Inflation Input ---
+    st.markdown("### 🧼 Additional Metrics")
+    inflation_rate = st.slider("Assumed Inflation Rate (%)", 0.0, 15.0, 6.0, 0.1)
 
-# --- Display ---
-#st.metric("CAGR (Nominal %)", f"{real_cagr*100:.2f}%")
-#st.metric("Inflation-Adjusted CAGR", f"{real_cagr_adjusted*100:.2f}%")
-st.metric("Inflation-Adjusted Annual Return", f"{real_return*100:.2f}%")
+    # --- Real Return Calculation ---
+    real_return = ((1 + annual_return) / (1 + inflation_rate / 100)) - 1
+    real_cagr = ((portfolio_values[-1] / invested_values[-1]) ** (1 / years) - 1)
+    real_cagr_adjusted = ((1 + real_cagr) / (1 + inflation_rate / 100)) - 1
 
+    # --- Display ---
+    st.metric("Inflation-Adjusted Annual Return", f"{real_return*100:.2f}%")
 
+# --- Explanatory Content ---
 with st.expander("ℹ️ What's the difference between Annual Return and CAGR?"):
     st.markdown("""
     **Annual Return** is the expected return you enter for simulation – it’s a fixed growth assumption.
@@ -176,12 +172,12 @@ with st.expander("ℹ️ Understanding Returns: CAGR, Annualized Return & Inflat
 ### 📈 **Annualized Return**
 This is the **constant yearly return** that would result in the same final value as your actual investment growth. It assumes **compounded growth**.
 
-### 🔁 **CAGR (Compound Annual Growth Rate)**
+### ♻️ **CAGR (Compound Annual Growth Rate)**
 - CAGR is a type of annualized return.
 - It reflects the **smoothed yearly rate** at which your investment grew from **beginning to end**, ignoring intermediate ups and downs.
 - Formula:  
-  \n\\( \\text{CAGR} = \\left(\\frac{\\text{Final Value}}{\\text{Total Invested}}\\right)^{1/n} - 1 \\)  
-  where \\( n \\) is the number of years.
+  \( \text{CAGR} = \left(\frac{\text{Final Value}}{\text{Total Invested}}\right)^{1/n} - 1 \)  
+  where \( n \) is the number of years.
 
 > **Use CAGR** to compare long-term investment performance across different options.
 
@@ -191,7 +187,7 @@ This is the **constant yearly return** that would result in the same final value
 - Shows how much your investment actually **grew in purchasing power**.
 - Adjusted for inflation to show **real wealth gain**.
 - Formula:  
-  \n\\( \\text{Real Return} = \\frac{1 + \\text{Nominal Return}}{1 + \\text{Inflation Rate}} - 1 \\)
+  \( \text{Real Return} = \frac{1 + \text{Nominal Return}}{1 + \text{Inflation Rate}} - 1 \)
 
 > Even if your investment grew at 12%, if inflation was 6%, your **real return is only ~5.66%**.
 
@@ -207,7 +203,7 @@ This is the **constant yearly return** that would result in the same final value
 
 Always evaluate investments in **real terms**, not just nominal numbers.
 """)
-     
+
 with st.expander("ℹ️ What's Nominal vs Real Return?"):
     st.markdown("""
     - **Nominal Return** is the return you see before accounting for inflation.
@@ -215,13 +211,10 @@ with st.expander("ℹ️ What's Nominal vs Real Return?"):
 
     ### Example:
     If your portfolio grew 12% annually, but inflation was 6%:
-    \nReal Return = \\( \\frac{1 + 0.12}{1 + 0.06} - 1 = 5.66\\% \\)
+    \nReal Return = \( \frac{1 + 0.12}{1 + 0.06} - 1 = 5.66\% \)
 
     > Always consider **real return** to know how much wealth you’re really building.
     """)
-
- 
-
 # --- Footer ---
 st.markdown(
     "<hr style='margin-top:40px;'><div style='text-align:center;'>Made with ❤️ by <b>Avik & Nandita (Mukherjee) </b></div>",
