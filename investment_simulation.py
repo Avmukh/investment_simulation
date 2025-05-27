@@ -211,6 +211,7 @@ with st.expander("ℹ️ What's Nominal vs Real Return?"):
 
     ### Example:
     If your portfolio grew 12% annually, but inflation was 6%:
+    
      Real Return = (1 + 0.12) / (1 + 0.06) - 1 = 0.0566 = 5.66%
 
 
