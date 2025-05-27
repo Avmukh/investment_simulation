@@ -4,6 +4,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import time
 from babel.numbers import format_currency
+from num2words import num2words
+
+def inr_to_words(amount):
+    rupees = int(amount)
+    paise = int(round((amount - rupees) * 100))
+    words = num2words(rupees, lang='en_IN').title() + " Rupees"
+    if paise:
+        words += " and " + num2words(paise, lang='en_IN').title() + " Paise"
+    return words
+
 
 # --- Page Setup ---
 st.set_page_config(page_title="Investment Growth Simulator", layout="centered")
@@ -45,7 +55,12 @@ def synced_slider(label, min_val, max_val, default, step, key_base):
     elif input_val != st.session_state[key_base]:
         st.session_state[key_base] = input_val
 
+    # 💬 Show value in words (if > 0)
+    if st.session_state[key_base] > 0:
+        st.caption(f"🗣️ {inr_to_words(st.session_state[key_base])}")
+
     return st.session_state[key_base]
+
 
 # --- Inputs ---
 lumpsum = synced_slider("Lumpsum (₹)", 0, 10_000_000, 100_000, 1000, "lumpsum")
