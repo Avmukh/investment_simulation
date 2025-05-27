@@ -176,8 +176,7 @@ This is the **constant yearly return** that would result in the same final value
 - CAGR is a type of annualized return.
 - It reflects the **smoothed yearly rate** at which your investment grew from **beginning to end**, ignoring intermediate ups and downs.
 - Formula:  
-  \( \text{CAGR} = \left(\frac{\text{Final Value}}{\text{Total Invested}}\right)^{1/n} - 1 \)  
-  where \( n \) is the number of years.
+  = (Final_Value / Total_Invested) ^ (1 / Years) - 1.
 
 > **Use CAGR** to compare long-term investment performance across different options.
 
@@ -187,7 +186,8 @@ This is the **constant yearly return** that would result in the same final value
 - Shows how much your investment actually **grew in purchasing power**.
 - Adjusted for inflation to show **real wealth gain**.
 - Formula:  
-  \( \text{Real Return} = \frac{1 + \text{Nominal Return}}{1 + \text{Inflation Rate}} - 1 \)
+  =(1 + Nominal_Return_Cell) / (1 + Inflation_Rate_Cell) - 1
+
 
 > Even if your investment grew at 12%, if inflation was 6%, your **real return is only ~5.66%**.
 
@@ -211,7 +211,8 @@ with st.expander("ℹ️ What's Nominal vs Real Return?"):
 
     ### Example:
     If your portfolio grew 12% annually, but inflation was 6%:
-    \nReal Return = \( \frac{1 + 0.12}{1 + 0.06} - 1 = 5.66\% \)
+     Real Return = (1 + 0.12) / (1 + 0.06) - 1 = 0.0566 = 5.66%
+
 
     > Always consider **real return** to know how much wealth you’re really building.
     """)
