@@ -9,7 +9,7 @@ from num2words import num2words
 def inr_to_words(amount):
     rupees = int(amount)
     paise = int(round((amount - rupees) * 100))
-    words = num2words(rupees, lang='en_IN').title() + " Rupees"
+    words = num2words(rupees, lang='en_IN').title() + " "
     if paise:
         words += " and " + num2words(paise, lang='en_IN').title() + " Paise"
     return words
